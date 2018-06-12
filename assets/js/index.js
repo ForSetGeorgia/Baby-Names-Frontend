@@ -1,22 +1,28 @@
-var most_popular, most_popular_boys, most_popular_girls;
+var years, current_year;
 
-// get all most popular names
-make_ajax_call(generate_api_url('most_popular_for_year'), {year: 2017}, function(data){
-  most_popular = data;
-  build_table('.most_popular_overall table', data, ['gender', 'name', 'amount', 'amount_year_change']);
+// get the most recent year
+make_ajax_call(generate_api_url('years'), {}, function(data){
+  years = data;
+  current_year = data.slice(-1)[0];
+  $('h1').html(current_year + ' ' + $('h1').html());
+
+  // get all most popular names
+  make_ajax_call(generate_api_url('most_popular_for_year'), {year: current_year}, function(data){
+    build_table('.most_popular_overall table', data, ['overall_rank', 'gender', 'name', 'amount', 'amount_year_change']);
+  });
+
+  // get boys most popular names
+  make_ajax_call(generate_api_url('most_popular_for_year_and_gender'), {year: current_year, gender: 'm'}, function(data){
+    build_table('.most_popular_boys table', data, ['gender_rank', 'name', 'amount', 'amount_year_change']);
+  });
+
+  // get girls most popular names
+  make_ajax_call(generate_api_url('most_popular_for_year_and_gender'), {year: current_year, gender: 'f'}, function(data){
+    build_table('.most_popular_girls table', data, ['gender_rank', 'name', 'amount', 'amount_year_change']);
+  });
+
 });
 
-// get boys most popular names
-make_ajax_call(generate_api_url('most_popular_for_year_and_gender'), {year: 2017, gender: 'm'}, function(data){
-  most_popular_boys = data;
-  build_table('.most_popular_boys table', data, ['name', 'amount', 'amount_year_change']);
-});
-
-// get girls most popular names
-make_ajax_call(generate_api_url('most_popular_for_year_and_gender'), {year: 2017, gender: 'f'}, function(data){
-  most_popular_girls = data;
-  build_table('.most_popular_girls table', data, ['name', 'amount', 'amount_year_change']);
-});
 
 
 function build_table(table_class, data, columns){
