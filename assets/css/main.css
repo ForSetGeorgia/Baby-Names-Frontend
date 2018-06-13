@@ -1,0 +1,9 @@
+body.home .most_popular > div{
+  display: inline-block;
+  width: 30%;
+}
+
+body.home .trending > div{
+  display: inline-block;
+  width: 30%;
+}
