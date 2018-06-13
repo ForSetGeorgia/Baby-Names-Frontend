@@ -51,7 +51,9 @@ function build_table(table_class, data, columns, links){
         }
       }
 
-      tr += data[i][columns[j]];
+      if (data[i][columns[j]] != null){
+        tr += data[i][columns[j]];
+      }
 
       if (has_link){
         tr += '</a>'
