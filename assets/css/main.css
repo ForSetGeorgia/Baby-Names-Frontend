@@ -7,6 +7,10 @@
   display: inline-block;
 }
 
+a,
+a:visited{
+  color: #000099;
+}
 
 
 body.home .most_popular > div,
