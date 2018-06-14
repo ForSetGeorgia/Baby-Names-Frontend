@@ -4,7 +4,7 @@ var years, current_year;
 make_ajax_call(generate_api_url('years'), {}, function(data){
   years = data;
   current_year = data.slice(-1)[0];
-  $('h1').html(current_year + ' ' + $('h1').html());
+  $('h1').html($('h1').html() + ': ' + current_year);
 
   // get all most popular names
   make_ajax_call(generate_api_url('most_popular_for_year'), {year: current_year}, function(data){
