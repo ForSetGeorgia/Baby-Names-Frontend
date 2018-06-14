@@ -1,3 +1,14 @@
+.heading{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.heading form{
+  display: inline-block;
+}
+
+
+
 body.home .most_popular > div,
 body.home .trending > div{
   display: inline-block;
