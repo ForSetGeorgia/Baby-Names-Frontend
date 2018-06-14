@@ -1,9 +1,39 @@
-body.home .most_popular > div{
-  display: inline-block;
-  width: 30%;
-}
-
+body.home .most_popular > div,
 body.home .trending > div{
   display: inline-block;
   width: 30%;
+}
+body.home .most_popular > div > table,
+body.home .trending > div > table{
+  width: 100%;
+}
+
+.table {
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  cursor: pointer;
+}
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+.table .table {
+  background-color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
 }
