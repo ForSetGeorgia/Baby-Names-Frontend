@@ -3,7 +3,12 @@ var years, current_year;
 // get the most recent year
 make_ajax_call(generate_api_url('years'), {}, function(data){
   years = data;
-  current_year = data.slice(-1)[0];
+
+  current_year = getQueryString('year');
+  if(current_year == null){
+    current_year = data.slice(-1)[0];
+  }
+
   $('h1').html($('h1').html() + ': ' + current_year);
 
   // get all most popular names
