@@ -13,5 +13,7 @@ make_ajax_call(generate_api_url('name'), {id: name_id}, function(data){
   $('h2').html($('h2').html() + data[0].gender);
 
   // build table
-  build_table('.name_details table', data, ['year', 'gender_rank', 'overall_rank', 'amount', 'amount_year_change']);
+  build_table('.name_details table', data,
+    ['year', 'gender_rank', 'overall_rank', 'amount', 'amount_year_change'],
+    [{'column': 'year', 'url': './?year=', 'param_key': 'year'}]);
 });

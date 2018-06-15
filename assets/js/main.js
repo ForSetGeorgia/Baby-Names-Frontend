@@ -79,3 +79,8 @@ var getQueryString = function ( field, url ) {
   var string = reg.exec(href);
   return string ? string[1] : null;
 };
+
+
+function build_year_link(year){
+  return '<a href="./?year=' + year + '">' + year + '</a>';
+}
