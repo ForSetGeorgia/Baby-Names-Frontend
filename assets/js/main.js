@@ -84,3 +84,30 @@ var getQueryString = function ( field, url ) {
 function build_year_link(year){
   return '<a href="./?year=' + year + '">' + year + '</a>';
 }
+
+function sum_array_items(num, total){
+  return num + total;
+}
+
+function get_years_for_value(array, key, value, as_link){
+  as_link = typeof as_link !== 'undefined' ? as_link : false;
+
+  var years = [];
+  for(var i=0; i<array.length;i++){
+    if (array[i][key] == value){
+      if (as_link){
+        years.push(build_year_link(array[i].year));
+      }else{
+        years.push(array[i].year);
+      }
+    }
+  }
+
+  return years;
+}
+
+const numberWithCommas = (x) => {
+  var parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return parts.join(".");
+}

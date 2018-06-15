@@ -18,11 +18,23 @@ body.home .most_popular > div,
 body.home .trending > div{
   display: inline-block;
   width: 30%;
+  vertical-align: top;
 }
 body.home .most_popular > div > table,
 body.home .trending > div > table{
   width: 100%;
 }
+
+body.name .tables > div{
+  display: inline-block;
+  width: 33%;
+  vertical-align: top;
+  margin-right: 20px;
+}
+body.name .tables > div > table{
+  width: 100%;
+}
+
 
 .table {
   margin-bottom: 1rem;
