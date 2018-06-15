@@ -7,6 +7,8 @@ make_ajax_call(generate_api_url('years'), {}, function(data){
   current_year = getQueryString('year');
   if(current_year == null){
     current_year = data.slice(-1)[0];
+  }else{
+    current_year = Number(current_year);
   }
 
   $('h1').html($('h1').html() + ': ' + current_year);
@@ -46,6 +48,121 @@ make_ajax_call(generate_api_url('years'), {}, function(data){
       [{'column': 'name', 'url': './name.html?id=', 'param_key': 'id'}]);
   });
 
+
+  // get year summaries
+  make_ajax_call(generate_api_url('years_amount_summary'), {}, function(data){
+    // format data for charts
+    var total_amounts = data.reverse().map(function(item){
+      return item.total_births;
+    });
+    var total_boy_amounts = data.reverse().map(function(item){
+      return item.total_boy_births;
+    });
+    var total_girl_amounts = data.reverse().map(function(item){
+      return item.total_girl_births;
+    });
+
+    // highlight the current year
+    console.log(years.reverse());
+    console.log(typeof current_year === 'string');
+    idx_year = years.reverse().indexOf(current_year);
+    console.log(idx_year);
+    if (idx_year > -1){
+      total_amounts[idx_year] = { marker: {
+                      fillColor: '#FF0000',
+                      lineWidth: 3,
+                      lineColor: "#FF0000" // inherit from series
+              },y:total_amounts[idx_year]};
+
+      total_boy_amounts[idx_year] = { marker: {
+                      fillColor: '#FF0000',
+                      lineWidth: 3,
+                      lineColor: "#FF0000" // inherit from series
+              },y:total_boy_amounts[idx_year]};
+
+      total_girl_amounts[idx_year] = { marker: {
+                      fillColor: '#FF0000',
+                      lineWidth: 3,
+                      lineColor: "#FF0000" // inherit from series
+              },y:total_girl_amounts[idx_year]};
+
+    }
+
+    // chart
+    Highcharts.chart('births-over-time', {
+
+      title: {
+        text: 'Births Over Time'
+      },
+
+      yAxis: {
+        title: {
+          text: 'Number of Births'
+        },
+        min: 0
+      },
+
+      legend: {
+        enabled: true
+      },
+
+      plotOptions: {
+        series: {
+          label: {
+            connectorAllowed: false
+          },
+          pointStart: years[0]
+        }
+      },
+
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b><br/>',
+        shared: true,
+        crosshairs: true
+      },
+
+      // tooltip: {
+      //   formatter: function() {
+      //     return '<b>' + this.point.name + '</b><br/>' +
+      //             'Amount: ' + this.y + '<br />' +
+      //             'Amount Change: ' + this.point.amount_change + '<br />' +
+      //             'Gender Rank: ' + this.point.gender_rank + '<br />' +
+      //             'Overall Rank: ' + this.point.overall_rank;
+      //   }
+      // },
+
+      series: [{
+        name: 'Total Births',
+        data: total_amounts
+      },
+      {
+        name: 'Girl Births',
+        data: total_girl_amounts
+      },
+      {
+        name: 'Boy Births',
+        data: total_boy_amounts
+      }
+      ],
+
+      responsive: {
+        rules: [{
+          condition: {
+            maxWidth: 500
+          },
+          chartOptions: {
+            legend: {
+              layout: 'horizontal',
+              align: 'center',
+              verticalAlign: 'bottom'
+            }
+          }
+        }]
+      }
+    });
+
+
+  });
 
 });
 

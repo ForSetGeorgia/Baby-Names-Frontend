@@ -84,7 +84,7 @@ make_ajax_call(generate_api_url('name'), {id: name_id}, function(data){
   Highcharts.chart('chart-name-amounts', {
 
     title: {
-      text: data[0].name + ' over time'
+      text: data[0].name + ' Over Time'
     },
 
     xAxis: {
@@ -96,7 +96,7 @@ make_ajax_call(generate_api_url('name'), {id: name_id}, function(data){
 
     yAxis: {
       title: {
-        text: 'Number of Babies'
+        text: 'Number of Births'
       },
       min: 0
     },
