@@ -35,122 +35,129 @@
     </div>
 
     <h1></h1>
+    <h2 class="gender">Gender: </h2>
 
-    <div class="tables">
-      <div class="name_details">
-        <h2 class="gender">Gender: </h2>
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th>
-                Year
-              </th>
-              <th>
-                Gender Rank
-              </th>
-              <th>
-                Overall Rank
-              </th>
-              <th>
-                Amount
-              </th>
-              <th>
-                Change
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
+
+    <div class="row1">
+
+      <div id="chart-name-amounts"></div>
 
       <div class="quick_stats">
-        <h2>Quick Stats</h2>
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th>
-                Stat
-              </th>
-              <th>
-                Value
-              </th>
-              <th>
-                Year(s)
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="max-rank">
-              <td>
-                Highest Rank
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-            <tr class="min-rank">
-              <td>
-                Lowest Rank
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-            <tr class="total">
-              <td>
-                Total Amount
-              </td>
-              <td>
-              </td>
-              <td>
+        <div>
+          <h2>Quick Stats</h2>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>
+                  Stat
+                </th>
+                <th>
+                  Value
+                </th>
+                <th>
+                  Year(s)
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="max-rank">
+                <td>
+                  Highest Rank
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+              </tr>
+              <tr class="min-rank">
+                <td>
+                  Lowest Rank
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+              </tr>
+              <tr class="total">
+                <td>
+                  Total Amount
+                </td>
+                <td>
+                </td>
+                <td>
 
-              </td>
-            </tr>
-            <tr class="max-amount">
-              <td>
-                Highest Amount
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-            <tr class="min-amount">
-              <td>
-                Lowest Amount
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-            <tr class="max-increase">
-              <td>
-                Largest Increase
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-            <tr class="max-decrease">
-              <td>
-                Largest Decrease
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+              </tr>
+              <tr class="max-amount">
+                <td>
+                  Highest Amount
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+              </tr>
+              <tr class="min-amount">
+                <td>
+                  Lowest Amount
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+              </tr>
+              <tr class="max-increase">
+                <td>
+                  Largest Increase
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+              </tr>
+              <tr class="max-decrease">
+                <td>
+                  Largest Decrease
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
+    <div class="name_details">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>
+              Year
+            </th>
+            <th>
+              Gender Rank
+            </th>
+            <th>
+              Overall Rank
+            </th>
+            <th>
+              Amount
+            </th>
+            <th>
+              Change
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script type="text/javascript" src="../assets/js/main.js?v=1"></script>
     <script type="text/javascript" src="../assets/js/name.js?v=1"></script>
 

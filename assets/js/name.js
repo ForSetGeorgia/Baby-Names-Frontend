@@ -67,4 +67,81 @@ make_ajax_call(generate_api_url('name'), {id: name_id}, function(data){
   years = get_years_for_value(data, 'amount_year_change', num, true);
   $('.quick_stats table tr.max-decrease td:eq(1)').html(num);
   $('.quick_stats table tr.max-decrease td:eq(2)').html(years.join(', '));
+
+
+  // name amounts chart
+  // - format data for chart
+  var chart_data = data.reverse().map(function(item){
+    return {
+      'y': item.amount,
+      'name': item.year,
+      'amount_change': item.amount_year_change,
+      'gender_rank': item.gender_rank,
+      'overall_rank': item.overall_rank
+    };
+  });
+
+  Highcharts.chart('chart-name-amounts', {
+
+    title: {
+      text: data[0].name + ' over time'
+    },
+
+    xAxis: {
+      labels: {
+        enabled: true,
+        formatter: function() { return chart_data[this.value].name;},
+      }
+    },
+
+    yAxis: {
+      title: {
+        text: 'Number of Babies'
+      },
+      min: 0
+    },
+
+    legend: {
+      enabled: false
+    },
+
+    plotOptions: {
+      series: {
+        label: {
+          connectorAllowed: false
+        }
+      }
+    },
+
+    tooltip: {
+      formatter: function() {
+        return '<b>' + this.point.name + '</b><br/>' +
+                'Amount: ' + this.y + '<br />' +
+                'Amount Change: ' + this.point.amount_change + '<br />' +
+                'Gender Rank: ' + this.point.gender_rank + '<br />' +
+                'Overall Rank: ' + this.point.overall_rank;
+      }
+    },
+
+    series: [{
+      data: chart_data
+    }],
+
+    responsive: {
+      rules: [{
+        condition: {
+          maxWidth: 500
+        },
+        chartOptions: {
+          legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom'
+          }
+        }
+      }]
+    }
+
+  });
+
 });

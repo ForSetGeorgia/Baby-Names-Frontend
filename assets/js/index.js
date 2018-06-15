@@ -19,14 +19,14 @@ make_ajax_call(generate_api_url('years'), {}, function(data){
   });
 
   // get boys most popular names
-  make_ajax_call(generate_api_url('most_popular_for_year_and_gender'), {year: current_year, gender: 'm'}, function(data){
+  make_ajax_call(generate_api_url('most_popular_for_year_and_gender'), {year: current_year, gender: 'b'}, function(data){
     build_table('.most_popular_boys table', data,
       ['gender_rank', 'name', 'amount', 'amount_year_change'],
       [{'column': 'name', 'url': './name.html?id=', 'param_key': 'id'}]);
   });
 
   // get girls most popular names
-  make_ajax_call(generate_api_url('most_popular_for_year_and_gender'), {year: current_year, gender: 'f'}, function(data){
+  make_ajax_call(generate_api_url('most_popular_for_year_and_gender'), {year: current_year, gender: 'g'}, function(data){
     build_table('.most_popular_girls table', data,
       ['gender_rank', 'name', 'amount', 'amount_year_change'],
       [{'column': 'name', 'url': './name.html?id=', 'param_key': 'id'}]);

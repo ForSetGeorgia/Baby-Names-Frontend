@@ -25,16 +25,17 @@ body.home .trending > div > table{
   width: 100%;
 }
 
-body.name .tables > div{
+body.name .row1 > div{
   display: inline-block;
-  width: 33%;
+  width: 45%;
   vertical-align: top;
-  margin-right: 20px;
-}
-body.name .tables > div > table{
+  margin-right: 50px;
+}}
+
+/* body.name .row1 > div > table{
   width: 100%;
 }
-
+ */
 
 .table {
   margin-bottom: 1rem;
@@ -65,3 +66,10 @@ body.name .tables > div > table{
 .table-hover tbody tr:hover {
   background-color: rgba(0, 0, 0, 0.075);
 }
+
+
+#chart-name-amounts {
+  min-width: 310px;
+  max-width: 800px;
+  height: 400px;
+ }
