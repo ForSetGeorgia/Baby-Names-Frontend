@@ -51,6 +51,20 @@ make_ajax_call(generate_api_url('years'), {}, function(data){
 
   // get year summaries
   make_ajax_call(generate_api_url('years_amount_summary'), {}, function(data){
+    // populate quick stats
+    var year_stats = data.filter(function(x) {return x.year == current_year;} );
+    if (year_stats.length > 0){
+      year_stats = year_stats[0];
+
+      $('.quick_stats table tr.births td:eq(1)').html(numberWithCommas(year_stats.total_births));
+      $('.quick_stats table tr.unique-names td:eq(1)').html(year_stats.total_unique_names);
+      $('.quick_stats table tr.girl-births td:eq(1)').html(numberWithCommas(year_stats.total_girl_births));
+      $('.quick_stats table tr.girl-unique-names td:eq(1)').html(year_stats.total_girl_names);
+      $('.quick_stats table tr.boy-births td:eq(1)').html(numberWithCommas(year_stats.total_boy_births));
+      $('.quick_stats table tr.boy-unique-names td:eq(1)').html(year_stats.total_boy_names);
+    }
+
+
     // format data for charts
     var total_amounts = data.reverse().map(function(item){
       return item.total_births;
@@ -63,10 +77,7 @@ make_ajax_call(generate_api_url('years'), {}, function(data){
     });
 
     // highlight the current year
-    console.log(years.reverse());
-    console.log(typeof current_year === 'string');
-    idx_year = years.reverse().indexOf(current_year);
-    console.log(idx_year);
+    idx_year = years.indexOf(current_year);
     if (idx_year > -1){
       total_amounts[idx_year] = { marker: {
                       fillColor: '#FF0000',

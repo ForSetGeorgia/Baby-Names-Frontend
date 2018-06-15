@@ -24,6 +24,21 @@ body.home .most_popular > div > table,
 body.home .trending > div > table{
   width: 100%;
 }
+body.home .row1 > div{
+  display: inline-block;
+  vertical-align: top;
+}
+body.home .row1 > div:first-of-type{
+  width: 30%;
+}
+body.home .row1 > div:last-of-type{
+  width: 65%;
+}
+
+body.home .most_popular > div > table,
+body.home .trending > div > table{
+  width: 100%;
+}
 
 body.name .row1 > div{
   display: inline-block;
