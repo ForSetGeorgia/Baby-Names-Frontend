@@ -3,6 +3,8 @@ var name_id = getQueryString('id');
 
 // get the name details
 make_ajax_call(generate_api_url('name'), {id: name_id}, function(data){
+  data = data.years;
+
   // update title
   $('title').html(data[0].name + ' | ' + $('title').html());
 

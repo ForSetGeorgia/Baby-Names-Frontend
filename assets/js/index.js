@@ -15,21 +15,21 @@ make_ajax_call(generate_api_url('years'), {}, function(data){
 
   // get all most popular names
   make_ajax_call(generate_api_url('most_popular_for_year'), {year: current_year}, function(data){
-    build_table('.most_popular_overall table', data,
+    build_table('.most_popular_overall table', data.years,
       ['overall_rank', 'gender', 'name', 'amount', 'amount_year_change'],
       [{'column': 'name', 'url': './name.html?id=', 'param_key': 'id'}]);
   });
 
   // get boys most popular names
   make_ajax_call(generate_api_url('most_popular_for_year_and_gender'), {year: current_year, gender: 'b'}, function(data){
-    build_table('.most_popular_boys table', data,
+    build_table('.most_popular_boys table', data.years,
       ['gender_rank', 'name', 'amount', 'amount_year_change'],
       [{'column': 'name', 'url': './name.html?id=', 'param_key': 'id'}]);
   });
 
   // get girls most popular names
   make_ajax_call(generate_api_url('most_popular_for_year_and_gender'), {year: current_year, gender: 'g'}, function(data){
-    build_table('.most_popular_girls table', data,
+    build_table('.most_popular_girls table', data.years,
       ['gender_rank', 'name', 'amount', 'amount_year_change'],
       [{'column': 'name', 'url': './name.html?id=', 'param_key': 'id'}]);
   });
@@ -37,13 +37,13 @@ make_ajax_call(generate_api_url('years'), {}, function(data){
 
   // get largest increase
   make_ajax_call(generate_api_url('largest_amount_increase_for_year'), {year: current_year}, function(data){
-    build_table('.largest_increase_overall table', data,
+    build_table('.largest_increase_overall table', data.years,
       ['overall_rank', 'gender', 'name', 'amount', 'amount_year_change'],
       [{'column': 'name', 'url': './name.html?id=', 'param_key': 'id'}]);
   });
   // get largest decrease
   make_ajax_call(generate_api_url('largest_amount_decrease_for_year'), {year: current_year}, function(data){
-    build_table('.largest_decrease_overall table', data,
+    build_table('.largest_decrease_overall table', data.years,
       ['overall_rank', 'gender', 'name', 'amount', 'amount_year_change'],
       [{'column': 'name', 'url': './name.html?id=', 'param_key': 'id'}]);
   });
@@ -52,7 +52,7 @@ make_ajax_call(generate_api_url('years'), {}, function(data){
   // get year summaries
   make_ajax_call(generate_api_url('years_amount_summary'), {}, function(data){
     // populate quick stats
-    var year_stats = data.filter(function(x) {return x.year == current_year;} );
+    var year_stats = data.years.filter(function(x) {return x.year == current_year;} );
     if (year_stats.length > 0){
       year_stats = year_stats[0];
 
@@ -66,13 +66,13 @@ make_ajax_call(generate_api_url('years'), {}, function(data){
 
 
     // format data for charts
-    var total_amounts = data.reverse().map(function(item){
+    var total_amounts = data.years.reverse().map(function(item){
       return item.total_births;
     });
-    var total_boy_amounts = data.reverse().map(function(item){
+    var total_boy_amounts = data.years.reverse().map(function(item){
       return item.total_boy_births;
     });
-    var total_girl_amounts = data.reverse().map(function(item){
+    var total_girl_amounts = data.years.reverse().map(function(item){
       return item.total_girl_births;
     });
 
