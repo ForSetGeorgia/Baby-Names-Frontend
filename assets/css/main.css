@@ -88,3 +88,25 @@ body.name .row1 > div{
   max-width: 800px;
   height: 400px;
  }
+
+.pagination{
+  margin-top: 20px;
+}
+.pagination a{
+  border: solid 1px #000099;
+  padding: 3px;
+  text-decoration: none;
+}
+.pagination a:hover{
+  background-color: #000099;
+  color: #fff;
+}
+.pagination a.disabled{
+  color: #999;
+  border: solid 1px #999;
+}
+.pagination a.disabled:hover{
+  background-color: #fff;
+  color: #999;
+}
+}
