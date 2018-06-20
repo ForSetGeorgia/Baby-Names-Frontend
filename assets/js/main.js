@@ -2,7 +2,6 @@
 // set global variables
 ///////////////////////
 var current_locale = document.documentElement.lang;
-var api_origin = 'http://localhost:3000/';
 var api_url = api_origin + current_locale + '/v1/';
 
 
