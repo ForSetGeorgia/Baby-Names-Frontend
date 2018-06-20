@@ -21,7 +21,7 @@ make_ajax_call(generate_api_url('search'), {q: q, page: page}, function(data){
   // load table
   build_table('.name_details table', data,
     ['name', 'gender', 'overall_rank', 'amount', 'amount_year_change'],
-    [{'column': 'name', 'url': './name?id=', 'param_key': 'id'}]);
+    [{'column': 'name', 'url': './name.html?id=', 'param_key': 'id'}]);
 
   // update pagination links
   var params = 'q=' + q;
